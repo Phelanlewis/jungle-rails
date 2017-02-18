@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
     order  = create_order(charge)
 
     if order.valid?
+      UserMailer.order_email(order).deliver_now
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
     else
@@ -56,6 +57,8 @@ class OrdersController < ApplicationController
     order
   end
 
+  # UserMailer.order_confirmation(user, order).deliver
+
   # returns total in cents not dollars (stripe uses cents as well)
   def cart_total
     total = 0
@@ -66,5 +69,7 @@ class OrdersController < ApplicationController
     end
     total
   end
+
+
 
 end

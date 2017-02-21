@@ -1,0 +1,32 @@
+<dl class="dl-horizontal">
+  <dt><h3>Add Review</h3></dt>
+    <dd></dd>
+      <%= form_for ([@product, @review]) do |f| %>
+      <% if @review.errors.any? %>
+    <dd id="errorExplanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited
+        this review from being saved:</h2>
+        <ul>
+          <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </dd>
+    <% end %>
+    <dt class="field">
+      <%= f.label :description %>
+    </dt>
+    <dd>
+      <%= f.text_area :description %>
+    </dd>
+    <dt class="field">
+      <%= f.label :rating %>
+    </dt>
+    <dd class="actions">
+      <%= f.select :rating, options_for_select([1, 2, 3, 4, 5]) %>
+    </dd>
+    <dt>
+      <%= f.submit %>
+    </dt>
+  <% end %>
+</dl>

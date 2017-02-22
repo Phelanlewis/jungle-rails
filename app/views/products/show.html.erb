@@ -27,8 +27,8 @@
             <dt><h3>Reviews</h3></dt>
             <% @reviews.each do |review| %>
             <dd></dd>
-            <dt><%= review.user.name %> :</dt>
-            <dd><%= review.description %></dd>
+            <dt><%= review.user.name %> </dt>
+            <dd><%= review.rating %>: <%= review.description %></dd>
             <% if current_user && current_user.name == review.user.name %>
               <dt>Delete:</dt>
               <dd>

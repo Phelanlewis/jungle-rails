@@ -1,9 +1,8 @@
 class UserMailer < ActionMailer::Base
   default from: 'no-reply@jungle.com'
 
-  def order_confirmation(user, order)
-    @user = user
+  def order_email(order)
     @order = order
-    mail(to: user.email, subject: 'Order #{'order.id'} has been received')
+    mail(to: @order.email, subject: "Order #{@order.id} has been received")
   end
 end

@@ -9,9 +9,10 @@ class OrdersController < ApplicationController
     order  = create_order(charge)
 
     if order.valid?
-      UserMailer.order_email(order).deliver_now
+
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
+        # UserMailer.order_email(order).deliver_now
     else
       redirect_to cart_path, error: order.errors.full_messages.first
     end

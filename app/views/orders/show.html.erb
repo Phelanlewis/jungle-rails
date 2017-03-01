@@ -36,7 +36,9 @@
           </tr>
           <tr>
             <th>
+              <% if current_user %>
               Email:   <%= current_user.email %>
+              <% end %>
             </th>
           </tr>
         </tfoot>
